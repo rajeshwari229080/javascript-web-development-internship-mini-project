@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Automated Test Center Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1100px;
+      height: 500px;
+      background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #0f172a;
+      padding: 30px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+    }
+
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .header-left h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .header-left p {
+      font-size: 13px;
+      color: #64748b;
+    }
+    .test-badge {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+    }
+
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .metric-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .metric-card .lbl { font-size: 11px; color: #64748b; font-weight: 600; }
+    .metric-card .val { font-size: 16px; font-weight: 800; color: #0f172a; }
+
+    .test-suites-container {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .suite-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 14px;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 12px;
+    }
+    .suite-row:last-child {
+      border-bottom: none;
+    }
+    .suite-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .suite-icon {
+      color: #10b981;
+      font-weight: 900;
+      font-size: 13px;
+    }
+    .suite-title {
+      font-weight: 700;
+      color: #1e293b;
+    }
+    .suite-tag {
+      font-size: 10px;
+      font-family: monospace;
+      color: #64748b;
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .suite-timing {
+      font-size: 11px;
+      font-family: monospace;
+      color: #059669;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-header">
+    <div class="header-left">
+      <h2>Automated Test Center & Verification Matrix</h2>
+      <p>Built with Node.js Native Test Runner (node:test & node:assert/strict)</p>
+    </div>
+    <div class="test-badge">
+      <span class="dot"></span> 15 / 15 Tests Passed (100%)
+    </div>
+  </div>
+
+  <div class="metrics-bar">
+    <div class="metric-card">
+      <span class="lbl">Total Suites</span>
+      <span class="val">7</span>
+    </div>
+    <div class="metric-card">
+      <span class="lbl">Total Tests</span>
+      <span class="val">15</span>
+    </div>
+    <div class="metric-card">
+      <span class="lbl">Assertions</span>
+      <span class="val">40+ Strict</span>
+    </div>
+    <div class="metric-card">
+      <span class="lbl">Failure Count</span>
+      <span class="val" style="color: #10b981;">0</span>
+    </div>
+  </div>
+
+  <div class="test-suites-container">
+    <div class="suite-row">
+      <div class="suite-info">
+        <span class="suite-icon">✔</span>
+        <span class="suite-title">Assignment 1 — Variables, Data Types & Console Operations</span>
+        <span class="suite-tag">TC1: Alice, 25, true, Array.isArray()</span>
+      </div>
+      <span class="suite-timing">2.7 ms</span>
+    </div>
+    <div class="suite-row">
+      <div class="suite-info">
+        <span class="suite-icon">✔</span>
+        <span class="suite-title">Assignment 2 — Operators, Expressions & Input Handling</span>
+        <span class="suite-tag">TC2–TC3: $100 + 15% tip = $115, NaN guards</span>
+      </div>
+      <span class="suite-timing">2.1 ms</span>
+    </div>
+    <div class="suite-row">
+      <div class="suite-info">
+        <span class="suite-icon">✔</span>
+        <span class="suite-title">Assignment 3 — Conditional Logic & Grading System</span>
+        <span class="suite-tag">TC4–TC6: 85 &rarr; B/Passed, 40 &rarr; F, bounds</span>
+      </div>
+      <span class="suite-timing">1.8 ms</span>
+    </div>
+    <div class="suite-row">
+      <div class="suite-info">
+        <span class="suite-icon">✔</span>
+        <span class="suite-title">Assignment 4 — Loop Control Structures</span>
+        <span class="suite-tag">TC7: Table 5x, break @ 12, continue @ 3</span>
+      </div>
+      <span class="suite-timing">1.0 ms</span>
+    </div>
+    <div class="suite-row">
+      <div class="suite-info">
+        <span class="suite-icon">✔</span>
+        <span class="suite-title">Assignment 5 — Functions, Parameters & Variable Scope</span>
+        <span class="suite-tag">TC8–TC9: Default 20, arrow 30, ReferenceError</span>
+      </div>
+      <span class="suite-timing">1.7 ms</span>
+    </div>
+    <div class="suite-row">
+      <div class="suite-info">
+        <span class="suite-icon">✔</span>
+        <span class="suite-title">Assignment 6 — Arrays, Objects & Array Methods</span>
+        <span class="suite-tag">TC10: forEach, filter &lt; 50, map formatting</span>
+      </div>
+      <span class="suite-timing">4.1 ms</span>
+    </div>
+    <div class="suite-row">
+      <div class="suite-info">
+        <span class="suite-icon">✔</span>
+        <span class="suite-title">Capstone — Interactive Inventory & Analytics Dashboard</span>
+        <span class="suite-tag">TC11–TC15: Monitor ($150), $975 Total Value, Boundaries</span>
+      </div>
+      <span class="suite-timing">4.9 ms</span>
+    </div>
+  </div>
+
+</body>
+</html>

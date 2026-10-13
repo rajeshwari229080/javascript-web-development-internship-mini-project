@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>README Hero Banner</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1200px;
+      height: 420px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #0f172a;
+      padding: 36px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+    }
+
+    .glow-1 {
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+      pointer-events: none;
+    }
+    .glow-2 {
+      position: absolute;
+      bottom: -150px;
+      left: 10%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0) 70%);
+      pointer-events: none;
+    }
+
+    .top-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .tag-ribbon {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .pill {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px solid #c7d2fe;
+    }
+    .pill-green {
+      background: #ecfdf5;
+      color: #065f46;
+      border-color: #a7f3d0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      margin: 12px 0;
+    }
+    .brand-title {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+    .brand-title span {
+      background: linear-gradient(135deg, #4f46e5 0%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .brand-subtitle {
+      font-size: 16px;
+      color: #475569;
+      max-width: 850px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .bottom-cards-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+    .feature-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .card-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #64748b;
+      letter-spacing: 0.5px;
+    }
+    .card-stat {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-top: 2px;
+    }
+    .card-sub {
+      font-size: 11px;
+      color: #0284c7;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <div class="top-meta">
+    <div class="tag-ribbon">
+      <span class="pill pill-green"><span class="dot"></span> 100% Deterministic Execution</span>
+      <span class="pill">ES6+ Vanilla JavaScript</span>
+      <span class="pill">Zero External Dependencies</span>
+    </div>
+    <div style="font-size: 12px; font-weight: 700; color: #64748b;">
+      Author: <strong>Rajeshwari M</strong>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <h1 class="brand-title">
+      JavaScript Core Concepts & <span>Capstone Inventory Analytics</span>
+    </h1>
+    <p class="brand-subtitle">
+      A comprehensive practical assignment laboratory and real-time inventory management engine. Demonstrating core variable scopes, type conversions, conditional grading, loop safety, functional pipelines, and financial metrics.
+    </p>
+  </div>
+
+  <div class="bottom-cards-row">
+    <div class="feature-card">
+      <div class="card-title">Curriculum Scope</div>
+      <div class="card-stat">6 Assignments</div>
+      <div class="card-sub">Variables to High-Order Methods</div>
+    </div>
+    <div class="feature-card">
+      <div class="card-title">Capstone Valuation</div>
+      <div class="card-stat">$975.00 Total</div>
+      <div class="card-sub">Computed via Array.reduce()</div>
+    </div>
+    <div class="feature-card">
+      <div class="card-title">Native Test Suite</div>
+      <div class="card-stat">15 Tests Passing</div>
+      <div class="card-sub">node:test & node:assert</div>
+    </div>
+    <div class="feature-card">
+      <div class="card-title">Execution Mode</div>
+      <div class="card-stat">Dual Runtime</div>
+      <div class="card-sub">CLI Terminal + Browser UI</div>
+    </div>
+  </div>
+</body>
+</html>

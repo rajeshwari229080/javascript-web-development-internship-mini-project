@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Architecture Diagram Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1100px;
+      height: 480px;
+      background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #0f172a;
+      padding: 30px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+    }
+
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .header-left h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .header-left p {
+      font-size: 13px;
+      color: #64748b;
+    }
+    .arch-pill {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px solid #c7d2fe;
+    }
+
+    .arch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1fr;
+      gap: 16px;
+      flex: 1;
+    }
+    .arch-col {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .col-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .col-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #1e293b;
+    }
+    .col-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+    .box-title {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .box-desc {
+      color: #64748b;
+      line-height: 1.35;
+    }
+    .arrow-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 0;
+      color: #94a3b8;
+      font-weight: 900;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-header">
+    <div class="header-left">
+      <h2>Universal Module Pattern & System Architecture</h2>
+      <p>Clean separation of presentation, business logic, and deterministic test runners</p>
+    </div>
+    <div class="arch-pill">
+      Universal Module Definition (UMD)
+    </div>
+  </div>
+
+  <div class="arch-grid">
+    <!-- Col 1: Presentation & Runtime -->
+    <div class="arch-col">
+      <div class="col-header">
+        <span style="font-size: 16px;">🌐</span>
+        <span class="col-title">Client Runtime (Browser)</span>
+      </div>
+
+      <div class="col-box">
+        <div class="box-title">
+          <span>index.html & style.css</span>
+          <span style="color:#4f46e5;">UI Shell</span>
+        </div>
+        <div class="box-desc">Accessible dashboard tabs, KPI metrics, dynamic product tables, and form inputs.</div>
+      </div>
+
+      <div class="arrow-indicator">&darr;</div>
+
+      <div class="col-box">
+        <div class="box-title">
+          <span>js/main.js Controller</span>
+          <span style="color:#0284c7;">Events</span>
+        </div>
+        <div class="box-desc">DOM event orchestration, tab routing, prompt handlers, and virtual console logging.</div>
+      </div>
+
+      <div class="arrow-indicator">&darr;</div>
+
+      <div class="col-box">
+        <div class="box-title">
+          <span>Virtual Console Logger</span>
+          <span style="color:#10b981;">Telemetry</span>
+        </div>
+        <div class="box-desc">Captures live system outputs and formats them in real time for interactive inspection.</div>
+      </div>
+    </div>
+
+    <!-- Col 2: Core JavaScript Logic -->
+    <div class="arch-col" style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);">
+      <div class="col-header">
+        <span style="font-size: 16px;">⚙️</span>
+        <span class="col-title">Core Business Logic (ES6+)</span>
+      </div>
+
+      <div class="col-box">
+        <div class="box-title">
+          <span>Assignments 1 through 6</span>
+          <span style="color:#4f46e5;">js/assignment*.js</span>
+        </div>
+        <div class="box-desc">Standalone modules for variables, operators, grading switch, loops, scopes, and array methods.</div>
+      </div>
+
+      <div class="arrow-indicator">&harr;</div>
+
+      <div class="col-box" style="border-color:#86efac; background:#f0fdf4;">
+        <div class="box-title">
+          <span>js/inventory.js</span>
+          <span style="color:#15803d; font-weight:800;">Capstone Engine</span>
+        </div>
+        <div class="box-desc">Inventory state manager, strict bounds validation, category tier logic, reduce/filter/map pipelines.</div>
+      </div>
+
+      <div class="arrow-indicator">&uarr;</div>
+
+      <div class="col-box">
+        <div class="box-title">
+          <span>Dual Export Hook</span>
+          <span style="color:#64748b;">Compatibility</span>
+        </div>
+        <div class="box-desc"><code>module.exports</code> for Node.js test runners alongside <code>window.*</code> bindings for browsers.</div>
+      </div>
+    </div>
+
+    <!-- Col 3: Testing & CLI Runtime -->
+    <div class="arch-col">
+      <div class="col-header">
+        <span style="font-size: 16px;">🧪</span>
+        <span class="col-title">Server Runtime (Node.js)</span>
+      </div>
+
+      <div class="col-box">
+        <div class="box-title">
+          <span>node:test Suite</span>
+          <span style="color:#10b981;">Automated</span>
+        </div>
+        <div class="box-desc">15 deterministic test cases running across 7 suites without third-party frameworks.</div>
+      </div>
+
+      <div class="arrow-indicator">&darr;</div>
+
+      <div class="col-box">
+        <div class="box-title">
+          <span>node:assert/strict</span>
+          <span style="color:#f59e0b;">Contracts</span>
+        </div>
+        <div class="box-desc">Verifies type integrity, division safety, NaN handling, and expected ReferenceErrors.</div>
+      </div>
+
+      <div class="arrow-indicator">&darr;</div>
+
+      <div class="col-box">
+        <div class="box-title">
+          <span>CLI Direct Execution</span>
+          <span style="color:#4f46e5;">Terminal</span>
+        </div>
+        <div class="box-desc">Run any module directly with <code>node js/assignmentN.js</code> or <code>node js/inventory.js</code>.</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

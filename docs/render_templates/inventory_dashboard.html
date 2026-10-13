@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Capstone Inventory Dashboard Preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1100px;
+      height: 600px;
+      background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #0f172a;
+      padding: 30px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+    }
+
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .header-left h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .header-left p {
+      font-size: 13px;
+      color: #64748b;
+    }
+    .tier-badges {
+      display: flex;
+      gap: 8px;
+    }
+    .tier-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .tier-budget { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .tier-std { background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
+    .tier-prem { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .kpi-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 12px 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .kpi-box.emerald {
+      background: #f0fdf4;
+      border-color: #86efac;
+    }
+    .kpi-box .lbl {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748b;
+    }
+    .kpi-box .val {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 2px 0;
+    }
+    .kpi-box .sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: #059669;
+    }
+
+    .main-body {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 16px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    th {
+      text-align: left;
+      padding: 6px 8px;
+      background: #f8fafc;
+      color: #64748b;
+      font-weight: 600;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+    td {
+      padding: 7px 8px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #1e293b;
+    }
+
+    .cat-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    .analytics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      background: #f8fafc;
+      border-radius: 8px;
+      font-size: 12px;
+      border: 1px solid #f1f5f9;
+    }
+    .metric-row span:first-child {
+      color: #475569;
+      font-weight: 500;
+    }
+    .metric-row span:last-child {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .code-preview {
+      margin-top: 10px;
+      background: #f1f5f9;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-family: monospace;
+      font-size: 11px;
+      color: #334155;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-header">
+    <div class="header-left">
+      <h2>Interactive Product Inventory & Financial Analytics</h2>
+      <p>Demonstrating ES6+ Arrays, Objects, Higher-Order Methods & Boundary Logic</p>
+    </div>
+    <div class="tier-badges">
+      <span class="tier-pill tier-budget">Budget: &lt; $50</span>
+      <span class="tier-pill tier-std">Standard: $50–$199.99</span>
+      <span class="tier-pill tier-prem">Premium: &ge; $200</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-box">
+      <div class="lbl">Total Products</div>
+      <div class="val">3</div>
+      <div class="sub" style="color: #64748b;">Active Catalog</div>
+    </div>
+    <div class="kpi-box emerald">
+      <div class="lbl">Total Inventory Value</div>
+      <div class="val">$975.00</div>
+      <div class="sub">reduce((acc, p) =&gt; acc + p.price)</div>
+    </div>
+    <div class="kpi-box">
+      <div class="lbl">Affordable Items</div>
+      <div class="val">2 Items</div>
+      <div class="sub">filter(price &lt; 200)</div>
+    </div>
+    <div class="kpi-box">
+      <div class="lbl">Premium Tier</div>
+      <div class="val">1 Item</div>
+      <div class="sub">Laptop ($800)</div>
+    </div>
+  </div>
+
+  <div class="main-body">
+    <!-- Left: Catalog Table -->
+    <div class="card">
+      <div class="card-head">
+        <span class="card-title">📦 Product Roster & Category Assignment</span>
+        <span style="font-size: 11px; color: #64748b;">3 Registered Items</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>Laptop</strong></td>
+            <td>$800.00</td>
+            <td><span class="cat-tag tier-prem">Premium</span></td>
+            <td><span style="color:#10b981; font-weight:700;">● In Stock</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Mouse</strong></td>
+            <td>$25.00</td>
+            <td><span class="cat-tag tier-budget">Budget</span></td>
+            <td><span style="color:#10b981; font-weight:700;">● In Stock</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Monitor</strong> (Added)</td>
+            <td>$150.00</td>
+            <td><span class="cat-tag tier-std">Standard</span></td>
+            <td><span style="color:#10b981; font-weight:700;">● In Stock</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="code-preview">
+        <strong>Validation Rules:</strong> Non-empty string name • Price &gt; 0 • NaN guarded
+      </div>
+    </div>
+
+    <!-- Right: Computed Analytics -->
+    <div class="card">
+      <div class="card-head">
+        <span class="card-title">📊 Functional Analytics Engine</span>
+        <span style="font-size: 11px; color: #10b981; font-weight: 700;">Immutable</span>
+      </div>
+
+      <div class="analytics-list">
+        <div class="metric-row">
+          <span>Gross Valuation:</span>
+          <span>$975.00</span>
+        </div>
+        <div class="metric-row">
+          <span>Average Unit Price:</span>
+          <span>$325.00</span>
+        </div>
+        <div class="metric-row">
+          <span>Affordable Filter (&lt;$200):</span>
+          <span>["Mouse", "Monitor"]</span>
+        </div>
+        <div class="metric-row">
+          <span>Formatted Catalog Tag List:</span>
+          <span>["LAPTOP: $800", ...]</span>
+        </div>
+      </div>
+
+      <div class="code-preview">
+        <em>Output verified against Section 11 specifications.</em>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
