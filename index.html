@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Practical Assignments & Capstone Inventory Dashboard</title>
+  <meta name="description" content="Execution-ready JavaScript learning platform featuring Assignments 1-6 and the Capstone Interactive Product Inventory & Analytics Dashboard.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand-wrapper">
+      <div class="brand-logo">JS</div>
+      <div>
+        <h1 class="brand-title">JavaScript Core Concepts Platform</h1>
+        <p class="brand-subtitle">Practical Assignments (1–6) & Capstone Inventory Dashboard</p>
+      </div>
+    </div>
+    <div class="header-status">
+      <span class="status-pill"><span class="pulse-dot"></span> ES6+ Execution Ready</span>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="tabs-nav-container" aria-label="Assignment Navigation">
+    <ul class="tabs-nav" role="tablist">
+      <li>
+        <button class="tab-btn active" data-tab="tab-capstone" role="tab" id="btn-tab-capstone" aria-selected="true">
+          <span>Capstone Dashboard</span>
+          <span class="tab-badge">Featured</span>
+        </button>
+      </li>
+      <li>
+        <button class="tab-btn" data-tab="tab-a1" role="tab" id="btn-tab-a1" aria-selected="false">
+          <span>Assignment 1</span>
+          <span class="tab-badge">Variables</span>
+        </button>
+      </li>
+      <li>
+        <button class="tab-btn" data-tab="tab-a2" role="tab" id="btn-tab-a2" aria-selected="false">
+          <span>Assignment 2</span>
+          <span class="tab-badge">Operators</span>
+        </button>
+      </li>
+      <li>
+        <button class="tab-btn" data-tab="tab-a3" role="tab" id="btn-tab-a3" aria-selected="false">
+          <span>Assignment 3</span>
+          <span class="tab-badge">Conditions</span>
+        </button>
+      </li>
+      <li>
+        <button class="tab-btn" data-tab="tab-a4" role="tab" id="btn-tab-a4" aria-selected="false">
+          <span>Assignment 4</span>
+          <span class="tab-badge">Loops</span>
+        </button>
+      </li>
+      <li>
+        <button class="tab-btn" data-tab="tab-a5" role="tab" id="btn-tab-a5" aria-selected="false">
+          <span>Assignment 5</span>
+          <span class="tab-badge">Functions</span>
+        </button>
+      </li>
+      <li>
+        <button class="tab-btn" data-tab="tab-a6" role="tab" id="btn-tab-a6" aria-selected="false">
+          <span>Assignment 6</span>
+          <span class="tab-badge">Arrays</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="app-main">
+
+    <!-- CAPSTONE DASHBOARD -->
+    <section id="tab-capstone" class="assignment-panel active" role="tabpanel">
+      <div class="panel-header">
+        <h2 class="panel-title">Interactive Product Inventory & Analytics Dashboard</h2>
+        <p class="panel-desc">An integrated enterprise dashboard combining data types, operators, conditionals, loops, functions, and high-order array methods (reduce, filter, map).</p>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="analytics-cards-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Total Products</div>
+          <div class="kpi-value" id="kpi-total-products">2</div>
+          <div class="kpi-subtext">Active catalog items</div>
+        </div>
+        <div class="kpi-card kpi-success">
+          <div class="kpi-label">Total Inventory Value</div>
+          <div class="kpi-value" id="kpi-total-value">$825</div>
+          <div class="kpi-subtext">Calculated via Array.reduce()</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Affordable Items</div>
+          <div class="kpi-value" id="kpi-affordable-count">1</div>
+          <div class="kpi-subtext">Priced below $200 (filter)</div>
+        </div>
+        <div class="kpi-card kpi-warning">
+          <div class="kpi-label">Premium Items</div>
+          <div class="kpi-value" id="kpi-premium-count">1</div>
+          <div class="kpi-subtext">Priced $200 or above</div>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <!-- Left Column: Add Product & Controls -->
+        <div class="card">
+          <h3 class="card-title">
+            <span>Add Inventory Item</span>
+            <button class="btn btn-secondary btn-sm" id="btn-capstone-prompt" title="Simulate via browser prompt()">Run via prompt()</button>
+          </h3>
+          <form id="form-add-product" novalidate>
+            <div class="form-group">
+              <label for="input-product-name" class="form-label">Product Name</label>
+              <input type="text" id="input-product-name" class="form-input" placeholder="e.g. Monitor" required>
+            </div>
+            <div class="form-group">
+              <label for="input-product-price" class="form-label">Product Price ($)</label>
+              <input type="number" id="input-product-price" class="form-input" placeholder="e.g. 150" step="0.01" min="0.01" required>
+            </div>
+            <div id="product-form-feedback" class="feedback-msg"></div>
+            <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+              <button type="submit" class="btn btn-primary" id="btn-add-product" style="flex: 1;">Add Product</button>
+              <button type="button" class="btn btn-danger" id="btn-reset-demo">Reset Demo Data</button>
+            </div>
+          </form>
+
+          <!-- Financial Simulator Widget -->
+          <div style="margin-top: 2rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-secondary);">Tax & Discount Analytics</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <div class="form-group">
+                <label for="input-calc-tax" class="form-label">Tax Rate (%)</label>
+                <input type="number" id="input-calc-tax" class="form-input" value="10" min="0" max="100">
+              </div>
+              <div class="form-group">
+                <label for="input-calc-discount" class="form-label">Discount (%)</label>
+                <input type="number" id="input-calc-discount" class="form-input" value="0" min="0" max="100">
+              </div>
+            </div>
+            <div id="financial-summary-text" style="font-size: 0.85rem; color: var(--text-muted); background: #080d16; padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              Projected Total: <strong id="grand-total-display" style="color: var(--text-primary);">$825</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Inventory Table & Analytics Lists -->
+        <div class="card">
+          <h3 class="card-title">Live Inventory Table</h3>
+          <div class="table-responsive">
+            <table class="data-table" id="inventory-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Category</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Affordable List & Formatted Uppercase Report -->
+          <div style="margin-top: 1.5rem;">
+            <h4 style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Affordable Items (&lt; $200)</h4>
+            <div id="affordable-tags-list" class="tag-list"></div>
+          </div>
+
+          <div style="margin-top: 1.25rem;">
+            <h4 style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Formatted Report List (map)</h4>
+            <div id="formatted-report-tags" class="tag-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Virtual Output Console for Capstone -->
+      <div class="terminal-card" style="margin-top: 1.5rem;">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="terminal-dot dot-red"></span>
+            <span class="terminal-dot dot-yellow"></span>
+            <span class="terminal-dot dot-green"></span>
+          </div>
+          <span class="terminal-title">Capstone Console Output (Deterministic Test & Execution)</span>
+          <button class="btn btn-secondary btn-sm" id="btn-capstone-run-demo">Execute Demo Flow</button>
+        </div>
+        <div class="terminal-body" id="console-capstone"></div>
+      </div>
+    </section>
+
+    <!-- ASSIGNMENT 1 -->
+    <section id="tab-a1" class="assignment-panel" role="tabpanel">
+      <div class="panel-header">
+        <h2 class="panel-title">Assignment 1 — Variables, Data Types & Console Operations</h2>
+        <p class="panel-desc">Demonstrates variable declarations using var, let, and const, type inspection via typeof, and distinction between primitives and arrays.</p>
+      </div>
+      <div class="content-grid">
+        <div class="card">
+          <h3 class="card-title">Code Demonstration</h3>
+          <div class="code-preview">// Variable Declarations
+var userName = "Alice";
+let userAge = 25;
+const isEmployed = true;
+const userSkills = ["HTML", "CSS", "JavaScript"];
+
+// Output formatted with typeof
+console.log(`Name: ${userName} (Type: ${typeof userName})`);
+console.log(`Age: ${userAge} (Type: ${typeof userAge})`);
+console.log(`IsEmployed: ${isEmployed} (Type: ${typeof isEmployed})`);
+console.log(`Skills: ${JSON.stringify(userSkills)} (Type: ${typeof userSkills})`);
+
+// Primitive vs Array distinction
+Array.isArray(userSkills); // true
+typeof userSkills;         // "object"</div>
+          <button class="btn btn-primary" id="btn-run-a1">Execute Assignment 1</button>
+        </div>
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-dots"><span class="terminal-dot dot-red"></span><span class="terminal-dot dot-yellow"></span><span class="terminal-dot dot-green"></span></div>
+            <span class="terminal-title">Console Output</span>
+          </div>
+          <div class="terminal-body" id="console-a1"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSIGNMENT 2 -->
+    <section id="tab-a2" class="assignment-panel" role="tabpanel">
+      <div class="panel-header">
+        <h2 class="panel-title">Assignment 2 — Operators, Expressions & Input Handling</h2>
+        <p class="panel-desc">Captures user bill amount and tip percentage, performs explicit Number() conversion, validates input boundaries, and computes calculations using arithmetic and assignment operators.</p>
+      </div>
+      <div class="content-grid">
+        <div class="card">
+          <h3 class="card-title">Interactive Tip Calculator</h3>
+          <div class="form-group">
+            <label for="input-a2-bill" class="form-label">Bill Subtotal ($)</label>
+            <input type="number" id="input-a2-bill" class="form-input" value="100">
+          </div>
+          <div class="form-group">
+            <label for="input-a2-tip" class="form-label">Tip Percentage (0–100%)</label>
+            <input type="number" id="input-a2-tip" class="form-input" value="15">
+          </div>
+          <div id="feedback-a2" class="feedback-msg"></div>
+          <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+            <button class="btn btn-primary" id="btn-run-a2" style="flex: 1;">Calculate</button>
+            <button class="btn btn-secondary" id="btn-prompt-a2">Test browser prompt()</button>
+          </div>
+        </div>
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-dots"><span class="terminal-dot dot-red"></span><span class="terminal-dot dot-yellow"></span><span class="terminal-dot dot-green"></span></div>
+            <span class="terminal-title">Console Output</span>
+          </div>
+          <div class="terminal-body" id="console-a2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSIGNMENT 3 -->
+    <section id="tab-a3" class="assignment-panel" role="tabpanel">
+      <div class="panel-header">
+        <h2 class="panel-title">Assignment 3 — Conditional Logic</h2>
+        <p class="panel-desc">Validates numerical scores (0–100) using if...else, computes letter grades (A, B, C, D, F) via a switch statement, and evaluates pass/fail status using the ternary operator.</p>
+      </div>
+      <div class="content-grid">
+        <div class="card">
+          <h3 class="card-title">Score Evaluator</h3>
+          <div class="form-group">
+            <label for="input-a3-score" class="form-label">Numerical Score (0–100)</label>
+            <input type="number" id="input-a3-score" class="form-input" value="85" min="0" max="100">
+          </div>
+          <div id="feedback-a3" class="feedback-msg"></div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <button class="btn btn-primary" id="btn-run-a3">Evaluate Score</button>
+            <button class="btn btn-secondary btn-sm" id="btn-a3-demo85">Test 85 (Grade B)</button>
+            <button class="btn btn-secondary btn-sm" id="btn-a3-demo40">Test 40 (Grade F)</button>
+          </div>
+        </div>
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-dots"><span class="terminal-dot dot-red"></span><span class="terminal-dot dot-yellow"></span><span class="terminal-dot dot-green"></span></div>
+            <span class="terminal-title">Console Output</span>
+          </div>
+          <div class="terminal-body" id="console-a3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSIGNMENT 4 -->
+    <section id="tab-a4" class="assignment-panel" role="tabpanel">
+      <div class="panel-header">
+        <h2 class="panel-title">Assignment 4 — Loop Control Structures</h2>
+        <p class="panel-desc">Implements a for loop for multiplication tables, a while loop with break for integer divisibility, and a do...while loop demonstrating continue to skip specific iterations.</p>
+      </div>
+      <div class="content-grid">
+        <div class="card">
+          <h3 class="card-title">Loop Logic Controls</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+            Runs three loop algorithms:
+            <br>1. <code>for</code> loop: 5 x 1 to 5 x 5
+            <br>2. <code>while</code> loop with <code>break</code>: First integer &gt; 10 divisible by 6
+            <br>3. <code>do...while</code> loop with <code>continue</code>: Cycles 1 to 5, skipping 3
+          </p>
+          <button class="btn btn-primary" id="btn-run-a4">Run All Loop Demonstrations</button>
+        </div>
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-dots"><span class="terminal-dot dot-red"></span><span class="terminal-dot dot-yellow"></span><span class="terminal-dot dot-green"></span></div>
+            <span class="terminal-title">Console Output</span>
+          </div>
+          <div class="terminal-body" id="console-a4"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSIGNMENT 5 -->
+    <section id="tab-a5" class="assignment-panel" role="tabpanel">
+      <div class="panel-header">
+        <h2 class="panel-title">Assignment 5 — Functions and Scope</h2>
+        <p class="panel-desc">Contrasts standard and arrow functions with default parameters, and safely demonstrates function scope versus block scope with controlled ReferenceError handling.</p>
+      </div>
+      <div class="content-grid">
+        <div class="card">
+          <h3 class="card-title">Function & Scope Runner</h3>
+          <div class="code-preview">// Standard function with default parameters
+function calculateRectangleAreaStandard(width = 5, height = 4) {
+  return width * height;
+}
+
+// Arrow function
+const calculateRectangleAreaArrow = (width = 5, height = 4) => width * height;
+
+// Block scope isolation
+{
+  let blockVar = "inside block";
+}
+// Accessing blockVar here safely triggers ReferenceError</div>
+          <button class="btn btn-primary" id="btn-run-a5">Execute Functions & Scope Test</button>
+        </div>
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-dots"><span class="terminal-dot dot-red"></span><span class="terminal-dot dot-yellow"></span><span class="terminal-dot dot-green"></span></div>
+            <span class="terminal-title">Console Output</span>
+          </div>
+          <div class="terminal-body" id="console-a5"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSIGNMENT 6 -->
+    <section id="tab-a6" class="assignment-panel" role="tabpanel">
+      <div class="panel-header">
+        <h2 class="panel-title">Assignment 6 — Arrays, Objects & Array Methods</h2>
+        <p class="panel-desc">Demonstrates real array methods (forEach, filter, and map) manipulating an array of product objects.</p>
+      </div>
+      <div class="content-grid">
+        <div class="card">
+          <h3 class="card-title">Product Dataset & Methods</h3>
+          <div class="code-preview">const products = [
+  { name: "Laptop", price: 800 },
+  { name: "Mouse", price: 25 },
+  { name: "Keyboard", price: 45 }
+];
+
+// forEach: iterates and displays each product
+// filter: selects products with price < 50
+// map: builds formatted uppercase strings</div>
+          <button class="btn btn-primary" id="btn-run-a6">Execute Array Methods</button>
+        </div>
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-dots"><span class="terminal-dot dot-red"></span><span class="terminal-dot dot-yellow"></span><span class="terminal-dot dot-green"></span></div>
+            <span class="terminal-title">Console Output</span>
+          </div>
+          <div class="terminal-body" id="console-a6"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>JavaScript Web Development Internship Mini-Project &copy; 2026. Built with Vanilla JS, semantic HTML5, and responsive CSS.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/assignment1.js"></script>
+  <script src="js/assignment2.js"></script>
+  <script src="js/assignment3.js"></script>
+  <script src="js/assignment4.js"></script>
+  <script src="js/assignment5.js"></script>
+  <script src="js/assignment6.js"></script>
+  <script src="js/inventory.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

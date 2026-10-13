@@ -1,0 +1,19 @@
+{
+  "name": "javascript-practical-assignments",
+  "version": "1.0.0",
+  "description": "JavaScript Core Concepts Practical Assignments & Capstone Inventory Analytics Dashboard",
+  "main": "js/main.js",
+  "scripts": {
+    "test": "node --test tests/assignments.test.js",
+    "start": "node js/inventory.js"
+  },
+  "keywords": [
+    "javascript",
+    "core-concepts",
+    "assignments",
+    "inventory-analytics",
+    "testing"
+  ],
+  "author": "Rajeshwari M",
+  "license": "MIT"
+}
