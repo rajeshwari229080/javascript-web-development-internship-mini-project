@@ -289,3 +289,4 @@ Because `prompt()` and DOM APIs only exist in browser runtime environments, this
 ## License
 
 This project is licensed under the MIT License.
+"# javascript-web-development-internship-mini-project" 
